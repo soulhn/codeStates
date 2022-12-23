@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+  margin: 10px;
+  padding: 10px;
+  font-size: 50%;
+}
+
+body {
+}
+/* css reset 하는 코드*/
+
+main {
+  display: flex;
+  height: 100vw;
+}
+.w10 {
+  width: 10%;
+}
+.w20 {
+  width: 20%;
+}
+.w70 {
+  width: 70%;
+}
+
+.redBox {
+  border: 2px solid red;
+}
+.orangeBox {
+  border: 1px solid orange;
+
+  height: 10%;
+}
+.blueBox {
+  border: 1px solid blue;
+  margin: 1px;
+}
+
+.h80 {
+  height: 80%;
+}
+.h40 {
+  height: 40%;
+}
+
+.h20 {
+  height: 20%;
+}

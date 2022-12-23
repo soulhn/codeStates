@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  color: #ebebeb;
+  font-size: 2vw;
+}
+
+body {
+  display: flex;
+  border: 1px solid red;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* 계산기 전체 */
+.calculator {
+  width: 350px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  background-color: #4e4f51;
+}
+/* 버튼 한줄 한줄 가로 4칸 새로로 총 5개 */
+.buttonGroup {
+  width: 100%;
+  display: flex;
+  flex: 1 1 auto;
+}
+
+/* 결과화면 영역 */
+.resultScreen {
+  display: flex;
+  width: 100%;
+  flex: 1.5 1 auto;
+  justify-content: flex-end;
+  align-items: end;
+}
+.resultBox {
+  font-size: 4vw;
+  margin-right: 13px;
+}
+
+/* 계산기의 각 버튼 */
+.calculatorButton {
+  background-color: #7a7a7a;
+  flex: 1;
+  height: 100%;
+}
+.calculatorButton2 {
+  background-color: #7a7a7a;
+  flex: 2.23;
+  height: 100%;
+}
+.calculatorButton:hover {
+  color: blue;
+}
+
+/* 계산기 양쪽 버튼 둥글게 */
+.borderRadius_left {
+  border-bottom-left-radius: 30px;
+}
+.borderRadius_Right {
+  border-bottom-right-radius: 30px;
+}
+
+/* 계산기 버튼 색상 설정 */
+.bgOrange {
+  background-color: #f7a200;
+}
+
+.bgGray {
+  background-color: #7a7a7a;
+}
+.bgDarkGray {
+  background-color: #5f5f60;
+}
