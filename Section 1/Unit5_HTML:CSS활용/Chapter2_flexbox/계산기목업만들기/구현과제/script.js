@@ -89,6 +89,9 @@ buttons.addEventListener("click", function (event) {
     }
     if (action === "operator") {
       console.log("연산자 " + buttonContent + " 버튼");
+      if (firstNum && operatorForAdvanced && previousKey === "number") {
+        display.textContent = calculate(firstNum, operatorForAdvanced, display.textContent);
+      }
       operatorForAdvanced = buttonContent;
       previousKey = "operator";
       firstNum = display.textContent;
