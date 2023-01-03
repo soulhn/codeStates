@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <button class="toggle">toggle</button>
+    <div class="box" style="width: 100px; height: 100px; background: red"></div>
+
+    <script>
+      const box = document.querySelector(".box");
+      const toggleBtn = document.querySelector(".toggle");
+
+      const toggle = function () {
+        let isShow = false;
+
+        // TODO: ① 클로저를 반환하는 함수를 작성하세요.
+        return function () {
+          // TODO: ③ isShow 변수의 상태를 변경하는 코드를 작성하세요.
+          box.style.display = isShow ? "block" : "none";
+          // ③ 변수 상태 변경
+          isShow = !isShow;
+        };
+      };
+
+      // ② 이벤트 프로퍼티에 클로저를 할당
+      toggleBtn.onclick = toggle();
+    </script>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+  <body>
+    <button class="toggle">toggle</button>
+    <div class="box" style="width: 100px; height: 100px; background: red"></div>
+
+    <script>
+      const box = document.querySelector(".box");
+      const toggleBtn = document.querySelector(".toggle");
+
+      const toggle = function () {
+        let isShow = false;
+
+        // TODO: ① 클로저를 반환하는 함수를 작성하세요.
+        return function () {
+          // TODO: ③ isShow 변수의 상태를 변경하는 코드를 작성하세요.
+          box.style.display = isShow ? "block" : "none";
+          // ③ 변수 상태 변경
+          isShow = !isShow;
+        };
+      };
+
+      // ② 이벤트 프로퍼티에 클로저를 할당
+      toggleBtn.onclick = toggle();
+    </script>
+  </body>
+</html> -->
