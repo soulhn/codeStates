@@ -10,3 +10,5 @@ class Grub {
 }
 
 module.exports = Grub;
+
+//래퍼런스 코드랑 똑같이 작성했다.

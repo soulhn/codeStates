@@ -1,8 +1,8 @@
 const Bee = require("./Bee");
 
 class ForagerBee extends Bee {
-  constructor(age, job) {
-    super(age, job);
+  constructor() {
+    super();
     this.age = 10;
     this.job = "find pollen";
     this.canFly = true;
@@ -14,3 +14,5 @@ class ForagerBee extends Bee {
 }
 
 module.exports = ForagerBee;
+
+//래퍼런스코드와 똑같다.
