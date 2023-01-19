@@ -20,6 +20,17 @@ const readAllUsersChaining = () => {
     });
 };
 
+//래퍼런스 풀이
+const readAllUsersChaining2 = () => {
+  return getDataFromFilePromise(user1Path).then((user1) => {
+    return getDataFromFilePromise(user2Path).then((user2) => {
+      const user1Data = JSON.parse();
+      const user2Data = JSON.parse();
+      return [user1Data, user2Data];
+    });
+  });
+};
+
 // readAllUsersChaining();
 
 module.exports = {

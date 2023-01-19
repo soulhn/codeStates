@@ -15,6 +15,17 @@ const readAllUsers = () => {
 
 // readAllUsers()
 
+//래퍼런스 코드
+const readAllUsers2 = () => {
+  const user1 = getDataFromFilePromise(user1Path); //user1Path를 받아와서 user1에 할당시켜준다.
+  const user2 = getDataFromFilePromise(user2Path);
+  return Promise.all([user1, user2]).then(([user1, user2]) => {
+    const user1Data = JSON.parse(user1);
+    const user2Data = JSON.parse(user2);
+    return [user1Data, user2Data];
+  });
+};
+
 module.exports = {
   readAllUsers,
 };
