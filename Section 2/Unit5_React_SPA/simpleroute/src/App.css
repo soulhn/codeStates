@@ -1,0 +1,26 @@
+nav {
+  border-bottom: 1px solid darkblue;
+}
+
+ul {
+  display: flex;
+  justify-content: space-around;
+
+  list-style: none;
+  text-decoration: none;
+}
+
+li {
+  border: 3px solid black;
+  border-radius: 15px;
+  padding: 20px;
+  background-color: beige;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+}
