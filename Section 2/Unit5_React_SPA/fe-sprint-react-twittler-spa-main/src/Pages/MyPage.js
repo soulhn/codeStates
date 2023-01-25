@@ -24,20 +24,24 @@ const MyPage = () => {
       </div>
       <ul className="tweets__mypage">
         {/* TODO : dummyTweets중 kimcoding 이 작성한 트윗 메세지만 있어야 합니다. */}
-        <li className="tweet" key={filteredTweets[0].id}>
-          <div className="tweet__profile">
-            <img src={filteredTweets[0].picture} />
-          </div>
-          <div className="tweet__content">
-            <div className="tweet__userInfo">
-              <span className="tweet__username">{filteredTweets[0].username}</span>
-              <span className="tweet__createdAt">{filteredTweets[0].createdAt}</span>
-            </div>
-            <div className="tweet__message">{filteredTweets[0].content}</div>
-          </div>
-        </li>
+        {filteredTweets.map((tweet) => {
+          return (
+            <li className="tweet" key={tweet.id}>
+              <div className="tweet__profile">
+                <img src={tweet.picture} />
+              </div>
+              <div className="tweet__content">
+                <div className="tweet__userInfo">
+                  <span className="tweet__username">{tweet.username}</span>
+                  <span className="tweet__createdAt">{tweet.createdAt}</span>
+                </div>
+                <div className="tweet__message">{tweet.content}</div>
+              </div>
+            </li>
+          );
+        })}
       </ul>
-      TODO : Footer 컴포넌트를 작성합니다.
+      {/* {TODO : Footer 컴포넌트를 작성합니다. } */}
       <Footer />
     </section>
   );
