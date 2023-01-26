@@ -60,7 +60,7 @@
   border-radius: 50px;
 }
 
-.tweet__userInfo--buttonWrapper > button:hover, 
+.tweet__userInfo--buttonWrapper > button:hover,
 .tweet__userInfo--buttonWrapper > button:focus {
   outline: none;
   box-shadow: 0 0 3px var(--button-color);
