@@ -22,6 +22,7 @@ const Tweets = () => {
     };
     setMyDt([tweet, ...myDt]);
     // TODO : Tweet button 엘리먼트 클릭시 작동하는 함수를 완성하세요.
+    setInputMsg("");
 
     // 트윗 전송이 가능하게 작성해야 합니다.
   };
@@ -48,9 +49,9 @@ const Tweets = () => {
           <div className="tweetForm__inputContainer">
             <div className="tweetForm__inputWrapper">
               <div className="tweetForm__input">
-                <input type="text" defaultValue={username} placeholder="your username here.." className="tweetForm__input--username" onChange={handleChangeUser}></input>
+                <input type="text" value={username} placeholder="your username here.." className="tweetForm__input--username" onChange={handleChangeUser}></input>
                 {/* TODO : 트윗을 작성할 수 있는 textarea 엘리먼트를 작성하세요. */}
-                <textarea placeholder="트윗을 작성해주세요.." defaultValue={inputMsg} className="tweetForm__input--message" onChange={handleChangeMsg}></textarea>
+                <textarea placeholder="트윗을 작성해주세요.." value={inputMsg} className="tweetForm__input--message" onChange={handleChangeMsg}></textarea>
               </div>
               <div className="tweetForm__count" role="status">
                 <span className="tweetForm__count__text">
