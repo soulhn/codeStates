@@ -1,28 +1,28 @@
-import Head from 'next/head';
-import { useEffect, useState } from 'react';
-import { getFlight } from '../api/FlightDataApi';
-import FlightList from './component/FlightList';
-import LoadingIndicator from './component/LoadingIndicator';
-import Search from './component/Search';
-import Debug from './component/Debug';
+import Head from "next/head";
+import { useEffect, useState } from "react";
+import { getFlight } from "../api/FlightDataApi";
+import FlightList from "./component/FlightList";
+import LoadingIndicator from "./component/LoadingIndicator";
+import Search from "./component/Search";
+import Debug from "./component/Debug";
 // 후반 테스트를 진행할 때 아래 import를 삭제합니다.
-import json from '../resource/flightList';
+import json from "../resource/flightList";
 
 export default function Main() {
   // 항공편 검색 조건을 담고 있는 상태
   const [condition, setCondition] = useState({
-    departure: 'ICN',
+    departure: "ICN",
   });
   const [flightList, setFlightList] = useState(json);
 
   // 주어진 검색 키워드에 따라 condition 상태를 변경시켜주는 함수
   const search = ({ departure, destination }) => {
-    if (
-      condition.departure !== departure ||
-      condition.destination !== destination
-    ) {
-      console.log('condition 상태를 변경시킵니다');
-
+    if (condition.departure !== departure || condition.destination !== destination) {
+      console.log("condition 상태를 변경시킵니다");
+      setCondition({
+        departure,
+        destination,
+      });
       // TODO: search 함수가 전달 받아온 '항공편 검색 조건' 인자를 condition 상태에 적절하게 담아보세요.
     }
   };
@@ -56,7 +56,7 @@ export default function Main() {
 
       <main>
         <h1>여행가고 싶을 땐, States Airline</h1>
-        <Search />
+        <Search onSearch={search} />
         <div className="table">
           <div className="row-header">
             <div className="col">출발</div>
