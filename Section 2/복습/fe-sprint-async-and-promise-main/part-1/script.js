@@ -1,21 +1,21 @@
-let player = document.querySelector('#player');
-let title = document.querySelector('#title');
+let player = document.querySelector("#player");
+let title = document.querySelector("#title");
 
-let btnCallback = document.querySelector('#btnCallback');
+let btnCallback = document.querySelector("#btnCallback");
 btnCallback.onclick = runCallback;
 
-let btnPromise = document.querySelector('#btnPromise');
+let btnPromise = document.querySelector("#btnPromise");
 btnPromise.onclick = runPromise;
 
-let btnAsync = document.querySelector('#btnAsync');
+let btnAsync = document.querySelector("#btnAsync");
 btnAsync.onclick = runAsync;
 
 function runCallback() {
-  resetTitle();
-  playVideo();
+  resetTitle(); //제목 초기화
+  playVideo(); //영상 재생
 
   delay(1000, () => {
-    pauseVideo();
+    pauseVideo(); //비디오 멈추기
     displayTitle();
 
     delay(500, () => {
@@ -26,18 +26,39 @@ function runCallback() {
   });
 }
 
+// function runPromise() {
+//   resetTitle();
+//   playVideo();
+
+//   sleep(1000)
+//     .then(() => {
+//       pauseVideo();
+//       displayTitle();
+//     })
+//     .then(sleep.bind(null, 500))
+//     .then(highlightTitle)
+//     .then(sleep.bind(null, 2000))
+//     .then(resetTitle);
+// }
+
 function runPromise() {
   resetTitle();
   playVideo();
 
-  sleep(1000).then(() => {
-    pauseVideo();
-    displayTitle();
-  })
-    .then(sleep.bind(null, 500))
+  sleep(1000)
+    .then((param) => {
+      console.log(param);
+      pauseVideo();
+      displayTitle();
+      return "world";
+    })
+    .then((param) => {
+      console.log(param);
+      return sleep(5000);
+    })
     .then(highlightTitle)
     .then(sleep.bind(null, 2000))
-    .then(resetTitle)
+    .then(resetTitle);
 }
 
 async function runAsync() {
@@ -55,35 +76,34 @@ async function runAsync() {
   resetTitle();
 }
 
-
 function resetTitle() {
-  log('제목을 초기화합니다');
-  title.classList.remove('visible', 'highlight');
+  log("제목을 초기화합니다");
+  title.classList.remove("visible", "highlight");
 }
 
 function playVideo() {
-  log('영상을 재생합니다');
+  log("영상을 재생합니다");
   player.play();
 }
 
 function pauseVideo() {
-  log('영상을 멈춥니다');
+  log("영상을 멈춥니다");
   player.pause();
 }
 
 function displayTitle() {
-  log('제목을 표시합니다');
-  title.classList.add('visible');
+  log("제목을 표시합니다");
+  title.classList.add("visible");
 }
 
 function highlightTitle() {
-  log('제목을 강조합니다');
-  title.classList.add('highlight');
+  log("제목을 강조합니다");
+  title.classList.add("highlight");
 }
 
 function log(message) {
-  let logger = document.querySelector('#logger');
-  let l = document.createElement('div');
+  let logger = document.querySelector("#logger");
+  let l = document.createElement("div");
   l.textContent = `[${new Date().toISOString().slice(11, -5)}] ${message}`;
   logger.prepend(l);
 }
