@@ -26,8 +26,31 @@
  * 하지만 이 과제의 목적은 재귀를 공부하는 것이니, 처음부터 구현해봐야겠지요?:
  */
 function stringifyJSON(obj) {
-  // your code goes here
-};
+  // if (typeof obj === "undefined" || typeof obj === "function") return obj;
+
+  // 문자열
+  if (typeof obj === "string") return `"${obj}"`;
+  if (typeof obj === "boolean" || typeof obj === "number" || obj === null) return `${obj}`;
+
+  if (Array.isArray(obj)) {
+    let parseArr = [];
+    for (let el of obj) {
+      parseArr.push(stringifyJSON(el));
+    }
+    return `[${parseArr}]`;
+  }
+
+  if (Object.keys(obj)) {
+    let parseObj = "";
+    for (const key in obj) {
+      if (typeof obj[key] === "function" || obj[key] === undefined) return "{}";
+      let parseKey = stringifyJSON(key);
+      let parseValue = stringifyJSON(obj[key]);
+      parseObj += `${parseKey}:${parseValue},`;
+    }
+    return `{${parseObj.slice(0, -1)}}`;
+  }
+}
 
 // 다음 코드는 결과 제출을 위한 코드입니다. 신경 쓰지 않아도 좋습니다.
 if (typeof window === "undefined") {
