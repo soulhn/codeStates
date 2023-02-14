@@ -39,17 +39,27 @@ function stringifyJSON(obj) {
     }
     return `[${parseArr}]`;
   }
+  // 래퍼런스 코드 추가
+  // if (Array.isArray(obj)) {
+  //   let result = "";
+  //   for (const el of obj) {
+  //     result += stringifyJSON(el) + ",";
+  //   }
+  //   return `[${result.slice(0, -1)}]`;
+  // }
 
   if (Object.keys(obj)) {
     let parseObj = "";
     for (const key in obj) {
-      if (typeof obj[key] === "function" || obj[key] === undefined) return "{}";
+      // if (typeof obj[key] === "function" || obj[key] === undefined) return "{}";
+      if (typeof obj[key] === "function" || obj[key] === undefined) continue;
       let parseKey = stringifyJSON(key);
       let parseValue = stringifyJSON(obj[key]);
       parseObj += `${parseKey}:${parseValue},`;
     }
     return `{${parseObj.slice(0, -1)}}`;
   }
+  //객체 래퍼런스 코드
 }
 
 // 다음 코드는 결과 제출을 위한 코드입니다. 신경 쓰지 않아도 좋습니다.
