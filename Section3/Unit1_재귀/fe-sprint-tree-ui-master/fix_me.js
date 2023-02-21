@@ -194,5 +194,28 @@ function createTreeView(menu, currentNode) {
     }
   });
 }
+// 레퍼런스코드
+function createTreeView(menu, currentNode) {
+  for (const el of menu) {
+    const liElement = document.createElement("li");
+    currentNode.append(liElement);
+
+    if (el.children) {
+      const inputElement = documet.createElement("input");
+      inputElement.type = "checkbox";
+
+      const spanElement = document.createElement("span");
+      spanElement.textContent = el.name;
+
+      const ulElement = document.createElement("ul");
+
+      liElement.append(inputElement, spanElement, ulElement);
+
+      createTreeView(el.children, ulElement);
+    } else {
+      liElement.textContent = el.name;
+    }
+  }
+}
 
 createTreeView(menu, root);
