@@ -46,6 +46,15 @@ export const ModalView = styled.div.attrs((props) => ({
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 30px;
+  flex-direction: column;
+
+  > button {
+    margin-bottom: 50px;
+    background: none;
+    color: black;
+    font-size: 1rem;
+  }
 `;
 
 export const Modal = () => {
@@ -66,7 +75,10 @@ export const Modal = () => {
         </ModalBtn>
         {isOpen ? (
           <ModalBackdrop onClick={openModalHandler}>
-            <ModalView>모달창 열렸습니다.</ModalView>
+            <ModalView onClick={(event) => event.stopPropagation()}>
+              <button onClick={openModalHandler}>X</button>
+              <div>모달 열렸습니당!</div>
+            </ModalView>
           </ModalBackdrop>
         ) : null}
         {/* TODO : 조건부 렌더링을 활용해서 Modal이 열린 상태(isOpen이 true인 상태)일 때만 모달창과 배경이 뜰 수 있게 구현해야 합니다. */}
