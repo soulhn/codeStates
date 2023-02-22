@@ -101,7 +101,7 @@ export const Tag = () => {
               <span className="tag-title">{tag}</span>
               <span className="tag-close-icon" onClick={() => removeTags(index)}>
                 {/* TODO :  tag-close-icon이 tag-title 오른쪽에 x 로 표시되도록 하고, */}
-                {/* 삭제 아이콘을 click 했을 때 removeTags 메소드가 실행되어야 합니다. */}X
+                {/* 삭제 아이콘을 click 했을 때 removeTags 메소드가 실행되어야 합니다. */}&times;
               </span>
             </li>
           ))}
