@@ -20,6 +20,7 @@ const TabMenu = styled.ul`
     margin: 5px;
     flex-grow: 1;
     text-align: center;
+    transition: 0.5s;
   }
 
   .focused {

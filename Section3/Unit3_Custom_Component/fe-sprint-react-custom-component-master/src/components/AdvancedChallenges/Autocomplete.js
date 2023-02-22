@@ -1,23 +1,12 @@
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import { useState, useEffect } from "react";
+import styled from "styled-components";
 
-const deselectedOptions = [
-  'rustic',
-  'antique',
-  'vinyl',
-  'vintage',
-  'refurbished',
-  '신품',
-  '빈티지',
-  '중고A급',
-  '중고B급',
-  '골동품'
-];
+const deselectedOptions = ["rustic", "antique", "vinyl", "vintage", "refurbished", "신품", "빈티지", "중고A급", "중고B급", "골동품"];
 
 /* TODO : 아래 CSS를 자유롭게 수정하세요. */
-const boxShadow = '0 4px 6px rgb(32 33 36 / 28%)';
-const activeBorderRadius = '1rem 1rem 0 0';
-const inactiveBorderRadius = '1rem 1rem 1rem 1rem';
+const boxShadow = "0 4px 6px rgb(32 33 36 / 28%)";
+const activeBorderRadius = "1rem 1rem 0 0";
+const inactiveBorderRadius = "1rem 1rem 1rem 1rem";
 
 export const InputContainer = styled.div`
   margin-top: 8rem;
@@ -69,6 +58,9 @@ export const DropDownContainer = styled.ul`
 
   > li {
     padding: 0 1rem;
+    &.selected {
+      background-color: beige;
+    }
   }
 `;
 
@@ -79,13 +71,33 @@ export const Autocomplete = () => {
    * - inputValue state는 input값의 상태를 확인할 수 있습니다.
    * - options state는 input값을 포함하는 autocomplete 추천 항목 리스트를 확인할 수 있습니다.
    */
+  // input값의 유무
   const [hasText, setHasText] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState(deselectedOptions);
+  // 어드벤스드를 위한 상태(방향키 사용을 위해)
+  const [selected, setSelected] = useState(-1);
+
+  // 어드밴스드를 위한 함수
+  const handleKeyUp = (event) => {
+    console.log(event.key);
+    if (event.key === "ArrowDown" && selected < options.length - 1) {
+      setSelected(selected + 1);
+    }
+    if (event.key === "ArrowUp" && selected > -1) {
+      setSelected(selected - 1);
+    }
+    if (event.key === "Enter") {
+      setInputValue(options[selected]);
+      setOptions(deselectedOptions.filter((el) => el.includes(options[selected])));
+      // setSelected(-1);
+    }
+  };
 
   // useEffect를 아래와 같이 활용할 수도 있습니다.
   useEffect(() => {
-    if (inputValue === '') {
+    setSelected(-1);
+    if (inputValue === "") {
       setHasText(false);
     }
   }, [inputValue]);
@@ -106,6 +118,9 @@ export const Autocomplete = () => {
      * 3. autocomplete 추천 항목인 options의 상태가 적절하게 변경되어야 합니다.
      * Tip : options의 상태에 따라 dropdown으로 보여지는 항목이 달라집니다.
      */
+    setInputValue(event.target.value);
+    setHasText(true);
+    setOptions(deselectedOptions.filter((el) => el.includes(event.target.value)));
   };
 
   const handleDropDownClick = (clickedOption) => {
@@ -120,6 +135,8 @@ export const Autocomplete = () => {
      * 1. input값 상태인 inputValue가 적절하게 변경되어야 합니다.
      * 2. autocomplete 추천 항목인 options의 상태가 적절하게 변경되어야 합니다.
      */
+    setInputValue(clickedOption);
+    setOptions(deselectedOptions.filter((el) => el.includes(clickedOption)));
   };
 
   const handleDeleteButtonClick = () => {
@@ -133,28 +150,40 @@ export const Autocomplete = () => {
      * onClick 이벤트 발생 시
      * 1. input값 상태인 inputValue가 빈 문자열이 되어야 합니다.
      */
+    setInputValue("");
   };
 
   // Advanced Challenge: 상하 화살표 키 입력 시 dropdown 항목을 선택하고, Enter 키 입력 시 input값을 선택된 dropdown 항목의 값으로 변경하는 handleKeyUp 함수를 만들고,
   // 적절한 컴포넌트에 onKeyUp 핸들러를 할당합니다. state가 추가로 필요한지 고민하고, 필요 시 state를 추가하여 제작하세요.
 
   return (
-    <div className='autocomplete-wrapper'>
+    <div className="autocomplete-wrapper">
+      {inputValue}
+      {hasText + ""}
+
       <InputContainer>
         {/* TODO : input 엘리먼트를 작성하고 input값(value)을 state와 연결합니다. handleInputChange 함수와 input값 변경 시 호출될 수 있게 연결합니다. */}
+        <input type="text" onKeyUp={handleKeyUp} onChange={handleInputChange} value={inputValue} placeholder="값을 입력하세요" />
         {/* TODO : 아래 div.delete-button 버튼을 누르면 input 값이 삭제되어 dropdown이 없어지는 handler 함수를 작성합니다. */}
-        <div className='delete-button'>&times;</div>
+        <div className="delete-button" onClick={handleDeleteButtonClick}>
+          &times;
+        </div>
       </InputContainer>
       {/* TODO : input 값이 없으면 dropdown이 보이지 않아야 합니다. 조건부 렌더링을 이용해서 구현하세요. */}
-      <DropDown />
+      {hasText ? <DropDown selected={selected} options={options} handleComboBox={handleDropDownClick} /> : null}
     </div>
   );
 };
 
-export const DropDown = ({ options, handleComboBox }) => {
+export const DropDown = ({ selected, options, handleComboBox }) => {
   return (
     <DropDownContainer>
       {/* TODO : input 값에 맞는 autocomplete 선택 옵션이 보여지는 역할을 합니다. */}
+      {options.map((option, i) => (
+        <li key={i} className={i === selected ? "selected" : ""} onClick={() => handleComboBox(option)}>
+          {option}
+        </li>
+      ))}
     </DropDownContainer>
   );
 };

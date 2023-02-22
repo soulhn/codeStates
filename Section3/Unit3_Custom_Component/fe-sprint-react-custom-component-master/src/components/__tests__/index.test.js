@@ -17,10 +17,10 @@ describe("Tag UI 컴포넌트 기능 테스트", () => {
 });
 
 // ! advanced challenge를 위해 주석을 해제하세요.
-// describe('Autocomplete UI 컴포넌트 기능 테스트', () => {
-//   require('./Autocomplete.test');
-// });
+describe("Autocomplete UI 컴포넌트 기능 테스트", () => {
+  require("./Autocomplete.test");
+});
 
-// describe('ClickToEdit UI 컴포넌트 기능 테스트', () => {
-//   require('./ClickToEdit.test');
-// });
+describe("ClickToEdit UI 컴포넌트 기능 테스트", () => {
+  require("./ClickToEdit.test");
+});
