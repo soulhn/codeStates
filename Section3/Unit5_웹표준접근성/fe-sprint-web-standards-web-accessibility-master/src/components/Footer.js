@@ -1,7 +1,5 @@
 const Footer = () => {
-    return (
-        <div class="footer" style={{"text-align": "right", "font-weight":"400"}}>All rights reseved @ Codestates</div>
-    )
-}
+  return <footer style={{ "text-align": "right", "font-weight": "400" }}>All rights reseved @ Codestates</footer>;
+};
 
-export default Footer
+export default Footer;
