@@ -11,7 +11,8 @@ const Page07 = () => {
         <h2>예시 1</h2>
         <li>{`<input>`}요소만 있으면 무엇을 입력하라는 의미인지 알 수 없습니다. 레이블을 꼭 작성해주세요.</li>
         <div className="inputContainer">
-          <input type="text" title="예시1번" />
+          <label for="예시1번">아이디</label>
+          <input type="text" id="예시1번" />
         </div>
       </section>
       <section>

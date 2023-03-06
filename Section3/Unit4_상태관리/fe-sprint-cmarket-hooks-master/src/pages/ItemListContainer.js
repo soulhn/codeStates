@@ -3,6 +3,8 @@ import Item from "../components/Item";
 
 function ItemListContainer({ items, cartItems, setCartItems }) {
   const handleClick = (item) => {
+    console.log(item);
+    console.log(item.id);
     const copyCartItems = cartItems;
     const isIncart = cartItems.filter((el) => el.itemId === item.id)[0];
     if (isIncart) {
@@ -12,8 +14,6 @@ function ItemListContainer({ items, cartItems, setCartItems }) {
     } else {
       setCartItems([...cartItems, { itemId: item.id, quantity: 1 }]);
     }
-
-    console.log(isIncart);
   };
   return (
     <div id="item-list-container">
