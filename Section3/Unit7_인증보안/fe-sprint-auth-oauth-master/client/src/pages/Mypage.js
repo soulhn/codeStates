@@ -21,7 +21,9 @@ export default function Mypage({ setIsLogin, accessToken, setAccessToken } /*TOD
       })
       .then((_) => {
         setIsLogin(false);
-        setAccessToken("");
+        setAccessToken(null);
+        setGithubUser(null);
+        setServerResource(null);
         setIsLoading(false);
       }) //화면상의 로그아웃 설정
       .catch(() => {
@@ -39,13 +41,9 @@ export default function Mypage({ setIsLogin, accessToken, setAccessToken } /*TOD
       .post("http://localhost:4000/userinfo", { accessToken })
       .then((data) => {
         setIsLoading(true);
-        console.log("userInfo");
-        console.log(data.data.githubUserData);
         setGithubUser(data.data.githubUserData);
         setServerResource(data.data.serverResource);
         setIsLoading(false); // 로딩 종료
-        console.log(githubUser);
-        console.log(serverResource);
       })
       .catch((err) => {
         console.log("/userinfo 에러");
