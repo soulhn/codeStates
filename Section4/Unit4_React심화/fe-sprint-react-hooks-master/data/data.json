@@ -20,6 +20,33 @@
       "body": "반갑습니다",
       "author": "김코딩",
       "likes": 0
+    },
+    {
+      "title": "ㅁㄴㅇ",
+      "body": "ㅁㄴㅇ",
+      "author": "김코딩",
+      "id": 4
+    },
+    {
+      "title": "ㅇ",
+      "body": "ㅇ",
+      "author": "김코딩",
+      "like": 0,
+      "id": 5
+    },
+    {
+      "title": "ㅁㅁ",
+      "body": "ㅁㅁ",
+      "author": "김코딩",
+      "like": 0,
+      "id": 6
+    },
+    {
+      "title": "6번째",
+      "body": "작성",
+      "author": "parkhacker",
+      "like": 0,
+      "id": 7
     }
   ]
 }
